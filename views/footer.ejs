@@ -1,0 +1,23 @@
+  <div class="sort">
+    <a href="/">Tudo</a>|<a href="/active">Ativo</a>|<a href="/done">Concluido</a>
+  </div>
+  </div><!-- end Wrapper -->
+  <footer></footer>
+  <script>
+  $().ready(function(){
+    $('.new_task').hover(function(){
+      $(this).find('a.delete').show();
+    },
+    function(){
+      $(this).find('a.delete').hide();
+    });
+    $('ol li').hover(function(){
+      $(this).find('span a').show();
+    },
+    function(){
+      $(this).find('span a').hide();
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<% include header %>
+<section class="box">
+  <form action="/create" method="post" accept-charset="utf-8" class="new_task" >
+    <input type="checkbox"><span>1.</span><input type="text" name="content" placeholder="Type your task..."><a style="display:none" class="delete" href="#" title="Delete this todo list"></a>
+  </form>
+  <ol start="2">
+    <% if (todos != null){ %>
+      <% todos.forEach(function(todo){ %>
+        <div>
+          <form id="done" action="/update/<%- todo._id %>" method="post">
+            <input name="done" onclick="$('#done').submit();" type="checkbox">
+          </form>
+          <li>
+            <% if (todo.done == true){ %>
+              <span style="text-decoration:line-through;"><%- todo.content %></span>
+            <% }else{ %>
+              <span><%- todo.content %></span>
+            <% } %>
+            <span>
+              <a style="display:none" class="delete" href="/destroy/<%- todo._id %>" title="Delete this todo list"></a>
+            </span>
+          </li>
+        </div>
+      <% }); %>
+    <% } %>
+  </ol>
+  <div class="sub_footer">
+    <span class="ativos"></span>
+    <a href="/clean" class="clean" >Limpar</a>
+  </div>
+</section>
+<% include footer %>

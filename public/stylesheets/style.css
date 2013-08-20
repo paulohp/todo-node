@@ -1,0 +1,95 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background: #f7f7f7;
+}
+/*Defaults*/
+a {
+  color: #00B7FF;
+}
+ol{
+  margin: 0px;
+  padding: 0px;
+}
+ol li{
+  list-style-position: inside;
+}
+ol div{
+  color: grey;
+  padding: 12px 15px;
+  border-top: 1px solid #c3c3c3;
+}
+ol div:last-child {
+  border-bottom: 1px solid #c3c3c3;
+}
+ol form{
+  float: left;
+}
+form span{
+  color: grey;
+}
+section > form{
+  padding: 10px 15px;
+}
+form input[type="checkbox"]{
+  margin-right: 10px;
+}
+/*Alterações*/
+#wrapper{
+  width: 280px;
+  margin:0 auto;
+}
+.header{
+  border-radius: 10px 10px 0 0;
+  background: #0096D1;
+  padding: 5px;
+  box-shadow: 1px 1px 12px #c3c3c3;
+}
+.header h1{
+  color: white;
+  text-align: center;
+  font-size:16px;
+}
+.sort{
+  width: 225px;
+  margin: 15px auto;
+}
+.sort a{
+  padding: 0 15px;
+  text-decoration: none;
+  font-weight: bold;
+  color:#0096D1;
+}
+.box{
+  background: white;
+  box-shadow: 1px 1px 12px #c3c3c3;
+  border-radius:0 0 10px 10px;
+}
+.sub_footer{
+  display: table;
+  padding: 8px 15px;
+  width: 85%;
+}
+.clean{
+  color: #c3c3c3;
+  font-weight: bold;
+  font-size: 13px;
+  text-decoration: none;
+  float: right;
+  display: block;
+}
+
+.delete{
+  background: url('/images/close.png') no-repeat;
+  display: block;
+  float: right;
+  width: 24px;
+  height: 24px;
+  text-indent: -999999;
+}
+.new_task input[type="text"]{
+  border: 1px solid #c3c3c3;
+  box-shadow: inset -1px 1px 3px #e5e5e5;
+  padding: 6px 2px;
+  border-radius: 3px;
+}
