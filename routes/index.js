@@ -58,6 +58,15 @@ exports.update = function(req, res){
       });
     };
   });*/
+  if (req.body.done == 'on') {
+    connection.query('UPDATE todos SET done=1 WHERE id='+req.params.id, function(err){
+      res.redirect('/');
+    });
+  } else {
+    connection.query('UPDATE todos SET done=0 WHERE id='+req.params.id, function(err){
+      res.redirect('/');
+    });
+  };
 }
 
 exports.done = function(req, res){

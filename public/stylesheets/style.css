@@ -36,7 +36,8 @@ form input[type="checkbox"]{
 }
 /*Alterações*/
 #logo{
-
+  text-align: right;
+  margin-right: 200px;
 }
 #wrapper{
   width: 248px;
@@ -69,6 +70,7 @@ form input[type="checkbox"]{
   box-shadow: 1px 1px 12px #c3c3c3;
   border-radius:0 0 10px 10px;
   background-size: 250px;
+  padding-bottom: 12px;
 }
 .sub_footer{
   display: table;
@@ -83,7 +85,11 @@ form input[type="checkbox"]{
   float: right;
   display: block;
 }
-
+.ativos{
+  color: #c3c3c3;
+  font-weight: bold;
+  font-size: 13px;
+}
 .delete{
   background: url('/images/close.png') no-repeat;
   display: block;
