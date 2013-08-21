@@ -1,7 +1,7 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background: #f7f7f7;
+  background: url('/images/bg.png') repeat;
 }
 /*Defaults*/
 a {
@@ -35,15 +35,19 @@ form input[type="checkbox"]{
   margin-right: 10px;
 }
 /*Alterações*/
+#logo{
+
+}
 #wrapper{
-  width: 280px;
+  width: 248px;
   margin:0 auto;
 }
 .header{
   border-radius: 10px 10px 0 0;
-  background: #0096D1;
+  background: url('/images/header.png') no-repeat;
   padding: 5px;
   box-shadow: 1px 1px 12px #c3c3c3;
+  height: 37px;
 }
 .header h1{
   color: white;
@@ -61,9 +65,10 @@ form input[type="checkbox"]{
   color:#0096D1;
 }
 .box{
-  background: white;
+  background:url('/images/footer.jpg') white no-repeat bottom;
   box-shadow: 1px 1px 12px #c3c3c3;
   border-radius:0 0 10px 10px;
+  background-size: 250px;
 }
 .sub_footer{
   display: table;
