@@ -14,12 +14,6 @@ var connection = mysql.createConnection({
 });
 connection.query('use ' + DATABASE);
 exports.create = function(req, res){
-  /*new Todo({
-    content:req.body.content,
-    update_at: Date.now()
-  }).save(function(err, todo, count){
-    res.redirect('/');
-  });*/
   connection.query('insert into todos (content, done) values ("' + req.body.content + '", "' + 0 + '")',
   function selectCb(err, results, fields) {
       if (err) throw err;
@@ -28,15 +22,6 @@ exports.create = function(req, res){
 }
 
 exports.index = function(req, res){
-  /*Todo.find(function(err, todos, count){
-    res.render('index', 
-      { 
-        title: 'O que precisa ser feito?',
-        todos: todos,
-        count: count
-      }
-    );
-  });*/
   connection.query('SELECT * FROM todos;', function (err, todos, count) {
     res.render('index', 
         { 
@@ -54,6 +39,9 @@ exports.destroy = function(req, res){
       res.redirect('/');
     });
   });*/
+  connection.query('DELETE FROM todos WHERE id='+req.params.id, function(err, todo){
+    res.redirect('/');
+  });
 }
 
 exports.update = function(req, res){
