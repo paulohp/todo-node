@@ -61,32 +61,34 @@ exports.update = function(req, res){
 }
 
 exports.done = function(req, res){
-  /*Todo.find({'done': true}, function(err, todos, count){
+  connection.query('SELECT * FROM todos WHERE done = 1', function(err, todos, count){
     res.render('index', 
       { 
         title: 'O que precisa ser feito?',
         todos: todos
       }
     );
-  });*/
+  });
 }
 
 exports.active = function(req, res){
-  /*Todo.find({'done': false || null}, function(err, todos, count){
-    res.render('index',
-      {
+  connection.query('SELECT * FROM todos WHERE done = 0', function(err, todos, count){
+    res.render('index', 
+      { 
         title: 'O que precisa ser feito?',
         todos: todos
       }
     );
-  });*/
+  });
 }
 
 exports.destroyAll = function(req, res){
-  /*Todo.remove({}, function(err) { 
-    res.render('index',{
-      title:'O que precisa ser feito?',
-      todos: null
-    });
-  });*/ 
+  connection.query('DELETE * FROM todos', function(err){
+    res.render('index', 
+      { 
+        title: 'O que precisa ser feito?',
+        todos: null
+      }
+    );
+  }); 
 }

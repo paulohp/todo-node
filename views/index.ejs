@@ -7,7 +7,7 @@
     <% if (todos != null){ %>
       <% todos.forEach(function(todo){ %>
         <div>
-          <form id="done" action="/update/<%- todo._id %>" method="post">
+          <form id="done" action="/update/<%- todo.id %>" method="post">
             <input name="done" onclick="$('#done').submit();" type="checkbox">
           </form>
           <li>
