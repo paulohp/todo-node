@@ -9,6 +9,7 @@
     "express": "3.3.3",
     "ejs": "0.8.4",
     "mongoose": "3.6.14",
-    "connect": "*"
+    "connect": "*",
+    "mysql": "*"
     }
 }
