@@ -24,32 +24,25 @@ exports.destroy = function(req, res){
 }
 
 exports.update = function(req, res){
-  /*Todo.findById(req.params.id, function(err, todo){
-    if (req.body.done == 'on') {
-      todo.done = true;
-      todo.save(function(err, todo, count){
+  Todo.find(req.params.id).success(function(todo){
+    if(req.body.done == 'on') {
+      todo.updateAttributes({
+        done: 1
+      }).success(function(){
         res.redirect('/');
       });
-    } else {
-      todo.done = false;
-      todo.save(function(err, todo, count){
+    } else{
+      todo.updateAttributes({
+        done: 0
+      }).success(function(){
         res.redirect('/');
       });
-    };
-  });*/
-  if (req.body.done == 'on') {
-    connection.query('UPDATE todos SET done=1 WHERE id='+req.params.id, function(err){
-      res.redirect('/');
-    });
-  } else {
-    connection.query('UPDATE todos SET done=0 WHERE id='+req.params.id, function(err){
-      res.redirect('/');
-    });
-  };
+    }
+  });
 }
 
 exports.done = function(req, res){
-  connection.query('SELECT * FROM todos WHERE done = 1', function(err, todos, count){
+  Todo.findAll({ where: {done: 1} }).success(function(todos) {
     res.render('index', 
       { 
         title: 'O que precisa ser feito?',
@@ -60,7 +53,7 @@ exports.done = function(req, res){
 }
 
 exports.active = function(req, res){
-  connection.query('SELECT * FROM todos WHERE done = 0', function(err, todos, count){
+  Todo.findAll({ where: {done: 0} }).success(function(todos) {
     res.render('index', 
       { 
         title: 'O que precisa ser feito?',
