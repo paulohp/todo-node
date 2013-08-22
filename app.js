@@ -6,9 +6,8 @@
 var express = require('express');
 var http = require('http');
 var path = require('path');
+app = express();
 
-var app = express();
-require('./db')
 // all environments
 app.set('port', process.env.PORT || 3000);
 app.set('views', __dirname + '/views');
@@ -20,6 +19,7 @@ app.use(express.methodOverride());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.set('models', require('./models'));
 // development only
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());

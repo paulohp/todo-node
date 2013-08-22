@@ -1,46 +1,25 @@
-var mysql = require('mysql');
-var HOST = 'localhost';
-var PORT = 3306;
-var MYSQL_USER = 'root';
-var MYSQL_PASS = '';
-var DATABASE = 'rapido_ware';
-var TABLE = 'todos';
+var Todo = app.get('models').Todo;
 
-var connection = mysql.createConnection({
-    host: HOST,
-    port: PORT,
-    user: MYSQL_USER,
-    password: MYSQL_PASS,
-});
-connection.query('use ' + DATABASE);
 exports.create = function(req, res){
-  connection.query('insert into todos (content, done) values ("' + req.body.content + '", "' + 0 + '")',
-  function selectCb(err, results, fields) {
-      if (err) throw err;
-      else res.redirect('/');
+  Todo.create({content: req.body.content, done:0}).success(function(todos, create){
+    res.redirect('/');
   });
 }
 
 exports.index = function(req, res){
-  connection.query('SELECT * FROM todos;', function (err, todos, count) {
-    res.render('index', 
-        { 
-          title: 'O que precisa ser feito?',
-          todos: todos,
-          count: count
-        }
-      );
-  });
+  Todo.all().success(function(todos) {
+    res.render('index', {
+      title: 'O que precisa ser feito?',
+      todos: todos
+    });
+  })
 };
 
 exports.destroy = function(req, res){
-  /*Todo.findById(req.params.id, function(err, todo){
-    todo.remove(function(err, todo){
+  Todo.find(req.params.id).success(function(todo){
+    todo.destroy().success(function(todo){
       res.redirect('/');
     });
-  });*/
-  connection.query('DELETE FROM todos WHERE id='+req.params.id, function(err, todo){
-    res.redirect('/');
   });
 }
 
@@ -92,12 +71,9 @@ exports.active = function(req, res){
 }
 
 exports.destroyAll = function(req, res){
-  connection.query('DELETE * FROM todos', function(err){
-    res.render('index', 
-      { 
-        title: 'O que precisa ser feito?',
-        todos: null
-      }
-    );
-  }); 
+  Todo.findAll().success(function(todos){
+    todos.destroy().success(function(){
+      res.redirect('/');
+    });
+  });
 }
